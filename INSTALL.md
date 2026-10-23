@@ -1,8 +1,8 @@
-# Installation
+# 🚀 Installation
 
 The Web Kit is dependency-free. Choose the integration style that matches the host project.
 
-## Plain HTML
+## ✨ Plain HTML
 
 ```html
 <link rel="stylesheet" href="https://cybercoretech.github.io/cybercore-web-kit/dist/v1/tokens.css">
@@ -27,7 +27,7 @@ Add a chooser anywhere in the page:
 </div>
 ```
 
-## Vite, Astro, or React
+## ✨ Vite, Astro, or React
 
 Install the optional package from a release or copy the `dist/` directory into the project:
 
@@ -44,10 +44,10 @@ import '@cybercore/web-kit/v1/cybercore.js';
 
 For Astro and React, load the CSS from the application entrypoint and render the chooser markup in a client-rendered component. The engine is browser-only and should not be evaluated during server rendering.
 
-## Other projects
+## ✨ Other projects
 
 For any static host, download a tagged archive, copy `dist/`, and point `window.SITE.dataRoot` at the included `dist/data/` snapshot. Use the remote registry only when live catalog updates are preferred over offline reproducibility.
 
-## Accessibility and motion
+## ✨ Accessibility and motion
 
 The runtime respects `prefers-reduced-motion`. Set `window.SITE.web.motion` to `full`, `reduced`, or `none` to select a stricter project policy.
