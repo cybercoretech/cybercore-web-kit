@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "kit_version": "1.0.0",
+  "generated_at": "2026-10-23T11:50:53-07:00",
+  "source": {
+    "repository": "https://github.com/cybercoretech/cybercore",
+    "revision": "7a748bbf0f42aa4fbcd9964148a985818ce48d53"
+  },
+  "distribution": {
+    "versioned_assets": "v1/",
+    "contact_component": "contact.js",
+    "registry_snapshot": "data/",
+    "checksum_file": "checksums-sha256.txt"
+  }
+}

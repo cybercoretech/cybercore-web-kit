@@ -1,0 +1,25 @@
+{
+  "name": "@cybercore/web-kit",
+  "version": "1.0.0",
+  "description": "Dependency-free Cybercore browser theme, token, component, and effects distribution.",
+  "license": "MIT",
+  "homepage": "https://cybercoretech.github.io/cybercore-web-kit/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercoretech/cybercore-web-kit.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./v1/cybercore.js": "./dist/v1/cybercore.js",
+    "./v1/tokens.css": "./dist/v1/tokens.css",
+    "./v1/components.css": "./dist/v1/components.css",
+    "./v1/effects.css": "./dist/v1/effects.css",
+    "./contact.js": "./dist/contact.js",
+    "./manifest": "./dist/build.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
