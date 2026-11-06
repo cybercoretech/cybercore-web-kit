@@ -23,6 +23,7 @@ The kit has no runtime dependency or bundler requirement. It works in plain HTML
 | `dist/v1/components.css` | Theme-aware component primitives |
 | `dist/v1/effects.css` | Governed motion effects and reduced-motion fallbacks |
 | `dist/contact.js` | Universal Cybercore contact element |
+| `dist/chooser.js`, `dist/chooser.css` | Universal theme chooser, `<cybercore-theme-chooser>`: 600 registry themes + 12 signature mashups |
 | `dist/v1/webkit.json` | Version, capabilities, source, and compatibility metadata |
 
 ## 🚢 Releases and source
