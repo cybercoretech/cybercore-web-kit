@@ -1,16 +1,17 @@
 {
   "schema_version": 1,
   "kit_version": "1.0.0",
-  "generated_at": "2026-11-06T12:00:00-08:00",
+  "generated_at": "2026-11-07T20:43:42-08:00",
   "source": {
-    "repository": "https://github.com/cybercoretech/cybercore",
-    "revision": "59ec95f"
+    "repository": "https://github.com/cybercoretech/cybercoretech.github.io",
+    "revision": "3c4fa5667998803898c0954b841f38c87171b2b9",
+    "upstream": "https://github.com/cybercoretech/cybercore"
   },
   "distribution": {
     "versioned_assets": "v1/",
     "contact_component": "contact.js",
+    "theme_chooser": "chooser.js",
     "registry_snapshot": "data/",
-    "checksum_file": "checksums-sha256.txt",
-    "theme_chooser": "chooser.js"
+    "checksum_file": "checksums-sha256.txt"
   }
 }
