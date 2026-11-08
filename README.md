@@ -30,6 +30,8 @@ The kit has no runtime dependency or bundler requirement. It works in plain HTML
 
 This repository contains generated Web Kit artifacts. The canonical source and build process live in the [Cybercore Systems Framework](https://github.com/cybercoretech/cybercore), while the [Control Plane](https://github.com/cybercoretech/cybercore-control-plane) governs manifests, validation, and publishing plans.
 
+`dist/` mirrors the live kit and theme data on [cybercoretech.github.io](https://cybercoretech.github.io/kit/), which is itself generated from cybercore. The *Sync from org kit* workflow (`.github/workflows/sync-org-kit.yml`) runs every 6 hours or on demand, mirrors the org site with cybercore's `tools/publish-web-kit.sh`, checks syntax and checksums, and opens a PR when anything changed. Do not edit `dist/` by hand; change cybercore instead (see its [docs/distribution.md](https://github.com/cybercoretech/cybercore/blob/main/docs/distribution.md)).
+
 - [Live package directory](https://cybercoretech.github.io/cybercore-web-kit/dist/)
 - [Theme registry](https://cybercoretech.github.io/data/)
 - [Cybercore crates](https://crates.io/search?q=cybercore)

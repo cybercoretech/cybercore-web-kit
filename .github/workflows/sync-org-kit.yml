@@ -1,0 +1,65 @@
+name: Sync from org kit
+
+# dist/ mirrors the live kit and theme data on cybercoretech.github.io, which
+# is generated from cybercoretech/cybercore. This workflow opens a PR here
+# when the org site's kit/ or data/ change.
+
+on:
+  schedule:
+    - cron: "47 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-org-kit
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Mirror kit and registry snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch cybercore and the org site
+        run: |
+          git clone --depth 1 https://github.com/cybercoretech/cybercore.git "$RUNNER_TEMP/cybercore"
+          # Full history (blobs on demand): build.json records the org commit
+          # that last touched kit/ or data/.
+          git clone --filter=blob:none https://github.com/cybercoretech/cybercoretech.github.io.git "$RUNNER_TEMP/org"
+
+      - name: Mirror
+        env:
+          CYBERCORE_ORG_SITE: ${{ runner.temp }}/org
+          CYBERCORE_WEB_KIT_REPO: ${{ github.workspace }}
+        run: bash "$RUNNER_TEMP/cybercore/tools/publish-web-kit.sh"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate
+        run: |
+          cp dist/chooser.js "$RUNNER_TEMP/chooser.mjs" && node --check "$RUNNER_TEMP/chooser.mjs"
+          node --check dist/v1/cybercore.js
+          (cd dist && sha256sum --quiet -c checksums-sha256.txt)
+
+      - name: Open or update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rev="$(git -C "$RUNNER_TEMP/org" log -1 --format=%h -- kit data)"
+          {
+            echo "Mirrors the org kit and registry at [cybercoretech.github.io@${rev}](https://github.com/cybercoretech/cybercoretech.github.io/commit/${rev}) with \`tools/publish-web-kit.sh\` from cybercore."
+            echo
+            echo "Syntax and checksum checks passed in the sync run."
+            echo
+            echo '```'
+            git status --short | head -100
+            echo '```'
+          } > "$RUNNER_TEMP/body.md"
+          bash "$RUNNER_TEMP/cybercore/tools/open-sync-pr.sh" sync/org-kit "chore(dist): sync from org kit@${rev}" "$RUNNER_TEMP/body.md"
